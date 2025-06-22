@@ -12,12 +12,22 @@ import {
 } from '@mui/material';
 import styles from './repoListStyles';
 
+interface Repository {
+    name: string;
+    owner: string;
+    size: number;
+}
+
+interface ListRepositoriesResponse {
+    listRepositories: Repository[];
+}
+
 type Props = {
     onSelect: (repo: string) => void;
 };
 
 export default function RepoList({ onSelect }: Props) {
-    const { loading, error, data } = useQuery(LIST_REPOS);
+    const { loading, error, data } = useQuery<ListRepositoriesResponse>(LIST_REPOS);
 
     if (loading) {
         return (
@@ -42,11 +52,20 @@ export default function RepoList({ onSelect }: Props) {
                     Repositories
                 </Typography>
                 <List>
-                    {data.listRepositories.map((repo: any) => (
+                    {data!.listRepositories.map((repo) => (
                         <ListItemButton key={repo.name} onClick={() => onSelect(repo.name)}>
                             <ListItemText
                                 primary={repo.name}
-                                secondary={`Owner: ${repo.owner}, Size: ${repo.size}`}
+                                secondary={
+                                    <Box component="span" sx={styles.details}>
+                                        <Typography component="span" variant="body2" color="text.secondary">
+                                            Owner: {repo.owner}
+                                        </Typography>
+                                        <Typography component="span" variant="body2" color="text.secondary">
+                                            Size: {repo.size} bytes
+                                        </Typography>
+                                    </Box>
+                                }
                             />
                         </ListItemButton>
                     ))}

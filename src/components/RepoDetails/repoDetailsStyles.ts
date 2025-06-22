@@ -1,23 +1,12 @@
-import type {SxProps, Theme} from '@mui/material';
+import type { SxProps, Theme } from '@mui/material';
+import { commonStyles } from '../../styles/commonStyles';
 
 const styles: Record<string, SxProps<Theme>> = {
-    centeredBox: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        height: '100vh',
-        pt: 4,
-    },
     container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        height: '100vh',
-        pt: 4,
+        ...commonStyles.centeredContainer,
     },
     card: {
-        width: '100%',
-        maxWidth: 600,
+        ...commonStyles.contentCard,
         padding: 2,
     },
     backButton: {

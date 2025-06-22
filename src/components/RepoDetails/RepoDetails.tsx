@@ -25,7 +25,7 @@ export default function RepoDetails({ repo, onBack }: Props) {
 
     if (loading) {
         return (
-            <Box sx={styles.centeredBox}>
+            <Box sx={styles.container}>
                 <CircularProgress />
             </Box>
         );
@@ -33,7 +33,7 @@ export default function RepoDetails({ repo, onBack }: Props) {
 
     if (error) {
         return (
-            <Box sx={styles.centeredBox}>
+            <Box sx={styles.container}>
                 <Alert severity="error">{error.message}</Alert>
             </Box>
         );
@@ -48,7 +48,7 @@ export default function RepoDetails({ repo, onBack }: Props) {
                     <Button onClick={onBack} sx={styles.backButton}>← Back to list</Button>
                     <Typography variant="h5" sx={styles.title}>{details.name}</Typography>
                     <Typography>Owner: {details.owner}</Typography>
-                    <Typography>Size: {details.size}</Typography>
+                    <Typography>Size: {details.size} bytes</Typography>
                     <Typography>Private: {details.isPrivate ? 'Yes' : 'No'}</Typography>
                     <Typography>Files Count: {details.numberOfFiles}</Typography>
                     <Box mt={2}>

@@ -1,30 +1,23 @@
-import type {SxProps, Theme} from '@mui/material';
+import type { SxProps, Theme } from '@mui/material';
+import { commonStyles } from '../../styles/commonStyles';
 
 const styles: Record<string, SxProps<Theme>> = {
     loadingBox: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        height: '100vh',
-        pt: 4,
+        ...commonStyles.centeredContainer,
     },
     errorBox: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
+        ...commonStyles.centeredContainerFull,
     },
     container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        height: '100vh',
-        pt: 4,
+        ...commonStyles.centeredContainer,
     },
     paper: {
-        padding: 4,
-        width: '100%',
-        maxWidth: 600,
+        ...commonStyles.contentCard,
+    },
+    details: {
+        display: 'flex',
+        flexDirection: { xs: 'column', sm: 'row' },
+        gap: { xs: 0, sm: 1 },
     },
 };
 
